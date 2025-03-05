@@ -152,7 +152,7 @@ class _UserProfileState extends State<UserProfile> {
                               maxHeight:  120,
                               maxWidth: MediaQuery.sizeOf(context).width/2,
                               ),
-                            child:   ListView(
+                            child: ListView(
                                scrollDirection: Axis.horizontal,
                                        children: List.generate(widget.mediaList.length, (int index){
                                      if (widget.mediaList[index].type == "image") {
@@ -163,7 +163,7 @@ class _UserProfileState extends State<UserProfile> {
                                           _initializeVideoPlayerFuture =videoController!.initialize();
                                           messageType = "video";
                                         } 
-                                            return   Container(
+                                            return  Container(
                                         padding: const EdgeInsets.all(3),
                                                         child: Column(
                                                             crossAxisAlignment:

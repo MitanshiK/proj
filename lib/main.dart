@@ -864,7 +864,7 @@ FirebaseMessaging.onBackgroundMessage(backgroundMessageHandler);
                       //     event.docs.reversed.last .data() as Map<String, dynamic>); 
                       /// for type of message
                        
-                      var dt = event.docs.reversed.last .data(); // map of data at particular index
+                      var dt = event.docs.reversed.last.data(); // map of data at particular index
                           // var a=dt[index];
                           late final message;
                          late final messageType;

@@ -59,7 +59,7 @@ class _ChatRoomPageState extends State<ChatRoomPage>
 
   // late final animationController =
   //     AnimationController(vsync: this, duration: const Duration(seconds: 2));
-  VideoPlayerController? videoController; // video controller for videoPlayer
+  // VideoPlayerController? videoController; // video controller for videoPlayer
   late Future<void> _initializeVideoPlayerFuture; // future for video
   TextEditingController messageController = TextEditingController();
 
@@ -253,6 +253,7 @@ class _ChatRoomPageState extends State<ChatRoomPage>
                               String,
                               dynamic>; // map of data at particular index
                           // var a=dt[index];
+                          VideoPlayerController? videoController;
                           debugPrint("${dt.containsValue("hyy")}");
                           late final currentMessage;
                           late final prevMessage;
@@ -557,6 +558,7 @@ class _ChatRoomPageState extends State<ChatRoomPage>
                                                                                         try {
                                                                                           // Add the contact to the device's contact list
                                                                                           await FlutterContacts.insertContact(newContact);
+                                                                                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Contact added successfully!!")));
                                                                                           debugPrint('Contact added successfully');
                                                                                         } catch (e) {
                                                                                           debugPrint('Failed to add contact: $e');

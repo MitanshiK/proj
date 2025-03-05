@@ -19,7 +19,7 @@ class _NoChatsState extends State<NoChats> {
      child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Image(image: const AssetImage("assets/peoplechat.png"),
+        Image(image: const AssetImage("assets/bubble_chat.png"),
         height: MediaQuery.sizeOf(context).width/2,
         width: MediaQuery.sizeOf(context).width/2,
         ),

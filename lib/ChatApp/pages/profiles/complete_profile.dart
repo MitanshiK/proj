@@ -62,7 +62,7 @@ class _CompleteUserProfileState extends State<CompleteUserProfile> {
                     backgroundColor: const Color.fromARGB(255, 240, 217, 148),
                     backgroundImage: (picked == true)
                         ? FileImage(profilePic!)
-                        : ((widget.userModel.profileUrl!=null && widget.userModel.profileUrl!="") ? NetworkImage(widget.userModel.profileUrl.toString()): const AssetImage("assets/user.png") as ImageProvider),
+                        : ((widget.userModel.profileUrl!=null && widget.userModel.profileUrl!="") ? NetworkImage(widget.userModel.profileUrl.toString()): const AssetImage("assets/default_profile.png") as ImageProvider),
                     // child: (picked == false)
                     //     ? const Icon(
                     //         Icons.person,
@@ -244,7 +244,7 @@ void cropImageCamera(XFile file) async {
      result=await FirebaseStorage.instance.ref("ProfilePictures").child(widget.userModel.uId.toString()).putFile(profilePic!);  
     }else{
 
-          final ByteData byteData = await rootBundle.load("assets/user.png");
+          final ByteData byteData = await rootBundle.load("assets/default_profile.png");
 
     // Create a temporary file in the device's temporary directory
     final tempDir = await getTemporaryDirectory();

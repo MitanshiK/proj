@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
+import 'package:proj/ChatApp/helpers/ui_helper.dart';
 import 'package:proj/ChatApp/models/user_model.dart';
+import 'package:proj/ChatApp/pages/authenticate/login.dart';
 import 'package:proj/ChatApp/pages/profiles/complete_profile.dart';
 
 
@@ -206,7 +208,7 @@ String uId="";
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const SignInPage()));
+                                  builder: (context) => const Loginpage()));
                         },
                         child: const Text(
                           "Log In",
@@ -231,10 +233,11 @@ String uId="";
 
  void signUpUser() async {
   auth.UserCredential? userCredential;
+  UiHelper.loadingDialogFun(context,"Signing Up...");
     try {
       userCredential =    await auth.FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
+        email: email.trim(),
+        password: password.trim(),
       );
     
 
@@ -260,7 +263,7 @@ String uId="";
       UserModel userdata = UserModel(
           uId: userCredential.user!.uid,
           name: "",
-          email: email,
+          email: email.trim(),
           profileUrl: "");
 
        await FirebaseFirestore.instance  

@@ -1,13 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cubit_form/cubit_form.dart';
 import 'package:dio/dio.dart';
-import 'package:downloads_path_provider_28/downloads_path_provider_28.dart';
+// import 'package:downloads_path_provider_28/downloads_path_provider_28.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:proj/ChatApp/models/Blocs/video_arrow_bloc.dart';
 import 'package:proj/ChatApp/models/media_model.dart';
 import 'package:proj/ChatApp/models/user_model.dart';
 import 'package:video_player/video_player.dart';
+import 'package:chewie/chewie.dart';
 // opening shared media
 class OpenMedia extends StatefulWidget {
   const OpenMedia(
@@ -31,13 +32,21 @@ class OpenMedia extends StatefulWidget {
 class _OpenMediaState extends State<OpenMedia> {
  VideoPlayerController? videoController; // video controller for videoPlayer
   late Future<void> _initializeVideoPlayerFuture; // future for video
+ ChewieController? chewieController ; ///////
 
   @override
   void initState() {
    if(widget.type=="video"){
-      videoController =
-          VideoPlayerController.networkUrl(Uri.parse(widget.mediamodel.fileUrl!));
-      _initializeVideoPlayerFuture = videoController!.initialize();
+      videoController = VideoPlayerController.networkUrl(
+          Uri.parse(widget.mediamodel.fileUrl!),
+          videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true, allowBackgroundPlayback: true));
+      _initializeVideoPlayerFuture =  videoController!.initialize();
+      ///////////////////
+       chewieController = ChewieController(
+  videoPlayerController: videoController!,
+  autoPlay: true,
+  looping: true,
+);
     }
     super.initState();
   }
@@ -69,8 +78,10 @@ class _OpenMediaState extends State<OpenMedia> {
                                 //add more permission to request here.
                             ].request();
 
+                            /*    downloading media code start 
                             if(statuses[Permission.storage]!.isGranted){ 
-                                var dir = await DownloadsPathProvider.downloadsDirectory;
+
+                               var dir = await DownloadsPathProvider.downloadsDirectory;
                                 if(dir != null){
                                   String? savename;
 
@@ -102,7 +113,7 @@ class _OpenMediaState extends State<OpenMedia> {
                             }else{
                                debugPrint("No permission to read and write.");
                             }
-
+                  downloading media code end */
                          },
                          title: const Text("Download" ,style: TextStyle(fontFamily:"EuclidCircularB")),
                       ))
@@ -153,10 +164,11 @@ class _OpenMediaState extends State<OpenMedia> {
         children: [
           AspectRatio(
             aspectRatio: videoController!.value.aspectRatio,
-            child: VideoPlayer(videoController!),
+            child: Chewie(controller: chewieController!)
+            //VideoPlayer(videoController!),
           ),
           // Center the play/pause icon
-          IconButton(
+         /* IconButton(
             onPressed: () {
               if (videoController!.value.isPlaying) {
                 videoController!.pause();
@@ -171,7 +183,7 @@ class _OpenMediaState extends State<OpenMedia> {
               size: 80,
               color: Colors.white,
             ),
-          ),
+          ), */
         ],
       ),
     );

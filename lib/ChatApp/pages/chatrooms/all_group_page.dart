@@ -128,12 +128,12 @@ List<UserModel> groupMembers =[];
                                     const Color.fromARGB(255, 158, 219, 241),
                                 backgroundImage: (groupRoomModel.profilePic!= null && groupRoomModel.profilePic!="")
                                          ?  NetworkImage(groupRoomModel.profilePic.toString())
-                                         : const AssetImage("assets/multiple-users-silhouette.png") as ImageProvider
+                                         : const AssetImage("assets/group_image.png") as ImageProvider
                                 // (groupRoomModel.profilePic!=null && groupRoomModel.profilePic!="") 
                                 // ? NetworkImage(
                                 //    groupRoomModel.profilePic.toString(),
                                 //    )
-                                //    : AssetImage("assets/multiple-users-silhouette.png") as ImageProvider
+                                //    : AssetImage("assets/group_image") as ImageProvider
                                    ,
                               ),
                               subtitle: (groupRoomModel.lastMessage.toString() !=

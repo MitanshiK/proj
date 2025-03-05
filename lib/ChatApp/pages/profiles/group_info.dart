@@ -62,9 +62,7 @@ class _GroupInfoState extends State<GroupInfo> {
                         (widget.groupRoomModel.profilePic != null &&
                                 widget.groupRoomModel.profilePic != "")
                             ? NetworkImage(widget.groupRoomModel.profilePic!)
-                            : const AssetImage(
-                                    "assets/multiple-users-silhouette.png")
-                                as ImageProvider,
+                            : const AssetImage("assets/group_image.png") as ImageProvider,
                   ),
                 ),
                 Positioned(
@@ -84,7 +82,9 @@ class _GroupInfoState extends State<GroupInfo> {
                                         userModel: widget.userModel,
                                         groupRoomModel: widget.groupRoomModel,
                                         groupMembers: widget.groupMembers,
-                                      )));
+                                      )
+                                    )
+                                  );
                         },
                         icon: const Icon(
                           Icons.mode_edit_rounded,
@@ -354,7 +354,7 @@ class _GroupInfoState extends State<GroupInfo> {
                                           imageUrl: widget
                                               .mediaList[index].fileUrl
                                               .toString(),
-                                          placeholder: (context, url) => Container(
+                                          placeholder: (context, url) => SizedBox(
                                               width: 50,
                                               height: 50,
                                               child: const Center(

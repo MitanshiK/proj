@@ -33,7 +33,7 @@ class _ArchiveStoryState extends State<ArchiveStory> {
   void initState() {
    if(widget.type=="video"){
       videoController =
-          VideoPlayerController.network(Uri.parse(widget.mediamodel.fileUrl!).toString());
+          VideoPlayerController.networkUrl(Uri.parse(widget.mediamodel.fileUrl!));
       _initializeVideoPlayerFuture = videoController!.initialize();
     }
     super.initState();

@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -50,19 +41,58 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAHoZn60Cl1B2WKSLsAO_RoI4ZtiY9qzy8',
-    appId: '1:189080830346:android:b59907e3a8677488520873',
-    messagingSenderId: '189080830346',
-    projectId: 'fbauth-c0740',
-    storageBucket: 'fbauth-c0740.appspot.com',
+    apiKey: 'AIzaSyBnD6bQe8KuAX-0ct1Yy9ABoZ2jPpvOyTU',
+    appId: '1:3827096841:android:e1cd8f19dbc5caa61b87d8',
+    messagingSenderId: '3827096841',
+    projectId: 'my-project-68377-1709184103342',
+    databaseURL: 'https://my-project-68377-1709184103342-default-rtdb.firebaseio.com',
+    storageBucket: 'my-project-68377-1709184103342.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC11ZQePMu9OD5JajzI3LRbCHx3m1dP2To',
-    appId: '1:189080830346:ios:dc6e3c272f962b78520873',
-    messagingSenderId: '189080830346',
-    projectId: 'fbauth-c0740',
-    storageBucket: 'fbauth-c0740.appspot.com',
-    iosBundleId: 'com.example.fbsocial',
+    apiKey: 'AIzaSyAIZzPKPRIywl3cvmHr3Lq_s27_kTZZucg',
+    appId: '1:3827096841:ios:d8bbb709ae6b43ea1b87d8',
+    messagingSenderId: '3827096841',
+    projectId: 'my-project-68377-1709184103342',
+    databaseURL: 'https://my-project-68377-1709184103342-default-rtdb.firebaseio.com',
+    storageBucket: 'my-project-68377-1709184103342.appspot.com',
+    androidClientId: '3827096841-k0radifoh0r3c7a82vfr8sl7koftuer7.apps.googleusercontent.com',
+    iosClientId: '3827096841-inhcd1op8i31198q2p2vq8806frr61gl.apps.googleusercontent.com',
+    iosBundleId: 'com.example.proj',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyApW-HSb9rwYf6TcfaaNKhv_9AbbLeJIus',
+    appId: '1:3827096841:web:9bf14ef4fc151df01b87d8',
+    messagingSenderId: '3827096841',
+    projectId: 'my-project-68377-1709184103342',
+    authDomain: 'my-project-68377-1709184103342.firebaseapp.com',
+    databaseURL: 'https://my-project-68377-1709184103342-default-rtdb.firebaseio.com',
+    storageBucket: 'my-project-68377-1709184103342.appspot.com',
+    measurementId: 'G-Z1448YX8ZM',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyAIZzPKPRIywl3cvmHr3Lq_s27_kTZZucg',
+    appId: '1:3827096841:ios:d8bbb709ae6b43ea1b87d8',
+    messagingSenderId: '3827096841',
+    projectId: 'my-project-68377-1709184103342',
+    databaseURL: 'https://my-project-68377-1709184103342-default-rtdb.firebaseio.com',
+    storageBucket: 'my-project-68377-1709184103342.appspot.com',
+    androidClientId: '3827096841-k0radifoh0r3c7a82vfr8sl7koftuer7.apps.googleusercontent.com',
+    iosClientId: '3827096841-inhcd1op8i31198q2p2vq8806frr61gl.apps.googleusercontent.com',
+    iosBundleId: 'com.example.proj',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyApW-HSb9rwYf6TcfaaNKhv_9AbbLeJIus',
+    appId: '1:3827096841:web:cd0b8467f0961ba71b87d8',
+    messagingSenderId: '3827096841',
+    projectId: 'my-project-68377-1709184103342',
+    authDomain: 'my-project-68377-1709184103342.firebaseapp.com',
+    databaseURL: 'https://my-project-68377-1709184103342-default-rtdb.firebaseio.com',
+    storageBucket: 'my-project-68377-1709184103342.appspot.com',
+    measurementId: 'G-RLTES3D75K',
+  );
+
 }

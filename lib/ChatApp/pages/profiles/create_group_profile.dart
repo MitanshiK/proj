@@ -62,7 +62,7 @@ class _CreateGroupProfileState extends State<CreateGroupProfile> {
                     backgroundColor: const Color.fromARGB(255, 240, 217, 148),
                     backgroundImage: (picked == true)
                         ? FileImage(profilePic!)
-                        : (widget.groupRoomModel.profilePic!=null && widget.groupRoomModel.profilePic!="") ? NetworkImage(widget.groupRoomModel.profilePic.toString()) : const AssetImage("assets/multiple-users-silhouette.png") as ImageProvider,
+                        : (widget.groupRoomModel.profilePic!=null && widget.groupRoomModel.profilePic!="") ? NetworkImage(widget.groupRoomModel.profilePic.toString()) : const AssetImage("assets/group_image.png") as ImageProvider,
                     // child: (picked == false)
                     //     ? const Icon(
                     //         Icons.person,

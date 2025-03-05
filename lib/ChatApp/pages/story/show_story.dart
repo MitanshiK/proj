@@ -96,9 +96,8 @@ class _ShowStoryState extends State<ShowStory> {
                               providers: [
                                 BlocProvider<ShowStoryBloc>(create: (_)=> ShowStoryBloc(false),),
                                 BlocProvider<HeartVisBloc>(create:(_)=> HeartVisBloc(false))
-                              ],
-                                        
-                                        child: BlocBuilder<ShowStoryBloc,bool>(
+                               ], 
+                                   child: BlocBuilder<ShowStoryBloc,bool>(
                                        builder: (BuildContext context, state) {  
                             
                         var currentStory = recentStoryList[index];

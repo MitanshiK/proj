@@ -14,9 +14,9 @@ class UiHelper{
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-              const CircularProgressIndicator(),
-              const SizedBox(height: 20,),
-              Text(content)
+              Image.asset("assets/loader2.gif",width: 100,height: 100,),
+              const SizedBox(height: 10,),
+              Text(content.toUpperCase() ,style: TextStyle(fontFamily: "EuclidCircularB",fontSize: 15,fontWeight: FontWeight.w500,color: const Color.fromARGB(255, 244, 211, 111)),)
             ],),
           ),
        );
@@ -31,7 +31,7 @@ class UiHelper{
       context: context,
        builder: (BuildContext context) { 
       return AlertDialog(
-        title: const Text(" Error"),
+        title: const Text("Error"),
         content: Text(content),
         actions: [
           TextButton(onPressed: (){
@@ -39,9 +39,18 @@ class UiHelper{
           }, child: const Text("Ok"))
         ],
       );
-        }, );
+    },
+   );
   }
+static final emailRegExp = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+static final passRegExp=RegExp(r'^(?=.*?[A-Z])(?=.*?[0-9]).{8,}$'); 
 
+  static const errorFont=TextStyle(
+                    color: Color.fromRGBO(238, 75, 75, 1),
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "EuclidCircularB",
+                    fontSize: 12,
+                  );
 // // to choose if we want a video or picture camera to open
 //   static String cameraType(BuildContext context ){
 //     String CamType="";

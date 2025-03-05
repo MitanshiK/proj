@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:proj/ChatApp/home/home_page.dart';
 import 'package:proj/ChatApp/models/user_model.dart';
 import 'package:proj/ChatApp/pages/authenticate/login.dart';
+import 'package:proj/ChatApp/pages/profiles/complete_profile.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key ,required this.destination ,this.firebaseUser ,this.userModel});
@@ -20,20 +21,33 @@ class _SplashScreenState extends State<SplashScreen> {
  
  @override
   void initState() {
-     Timer(const Duration(seconds: 2),
-        (){ 
-          if(widget.destination=="home"){
-            Navigator.pop(context);
-           Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage(
-          firebaseUser: widget.firebaseUser!,
-          userModel: widget.userModel!,
-        )));
-          } else if(widget.destination=="login"){
-            Navigator.pop(context);
-             Navigator.push(context, MaterialPageRoute(builder: (context)=> const Loginpage()));
-          }
-        } );
-    
+     Timer(const Duration(seconds: 2), () {
+      if (widget.destination == "home") {
+        Navigator.pop(context);
+        if (widget.userModel!.name == "" || widget.userModel!.name == null) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => CompleteUserProfile(
+                        firebaseUser: widget.firebaseUser!,
+                        userModel: widget.userModel!,
+                      )));
+        }else{
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => HomePage(
+                        firebaseUser: widget.firebaseUser!,
+                        userModel: widget.userModel!,
+                      )));
+        }
+
+      } else if (widget.destination == "login") {
+        Navigator.pop(context);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const Loginpage()));
+      }
+    });
     super.initState();
   }
 

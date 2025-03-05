@@ -57,8 +57,8 @@ class _GroupRoomPageState extends State<GroupRoomPage>
   String? audioFilePath;
   List<MediaModel> mediaList = [];
 
-  late final animationController =
-      AnimationController(vsync: this, duration: const Duration(seconds: 2));
+  // late final animationController =
+  //     AnimationController(vsync: this, duration: const Duration(seconds: 2));
   VideoPlayerController? videoController; // video controller for videoPlayer
   late Future<void> _initializeVideoPlayerFuture; // future for video
   TextEditingController messageController = TextEditingController();
@@ -70,10 +70,15 @@ class _GroupRoomPageState extends State<GroupRoomPage>
 
   @override
   void dispose() {
-    animationController.dispose();
-    videoController!.dispose();
+    // animationController.dispose();
+    videoController?.dispose();
     super.dispose();
   }
+
+// @override
+// void didChangeDependencies(){
+
+// }
 
   @override
   Widget build(BuildContext context) {
@@ -192,10 +197,9 @@ class _GroupRoomPageState extends State<GroupRoomPage>
           child: Row(
             children: [
               CircleAvatar(
-                backgroundImage: (widget.groupRoomModel.profilePic != null &&
-                        widget.groupRoomModel.profilePic != "")
+                backgroundImage: (widget.groupRoomModel.profilePic != null && widget.groupRoomModel.profilePic != "")
                     ? NetworkImage(widget.groupRoomModel.profilePic.toString())
-                    : const AssetImage("assets/multiple-users-silhouette.png")
+                    : const AssetImage("assets/group_image.png")
                         as ImageProvider,
                 backgroundColor: const Color.fromARGB(255, 240, 217, 148),
               ),
@@ -476,16 +480,6 @@ class _GroupRoomPageState extends State<GroupRoomPage>
                                                                    fit: BoxFit.scaleDown,
                                                                    memCacheWidth: 230,
                                                                 ),
-                                                                
-                                                                
-                                                                // Image
-                                                                //     .network(
-                                                                //   currentMessage
-                                                                //       .fileUrl
-                                                                //       .toString(),
-                                                                //   cacheWidth:
-                                                                //       230,
-                                                                // ),
                                                               )
                                                             : (messageType ==
                                                                     "video")
@@ -582,6 +576,7 @@ class _GroupRoomPageState extends State<GroupRoomPage>
                                                                                         try {
                                                                                           // Add the contact to the device's contact list
                                                                                           await FlutterContacts.insertContact(newContact);
+                                                                                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Contact added successfully!!")));
                                                                                           debugPrint('Contact added successfully');
                                                                                         } catch (e) {
                                                                                           debugPrint('Failed to add contact: $e');
